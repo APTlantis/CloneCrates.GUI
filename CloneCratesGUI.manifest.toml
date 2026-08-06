@@ -123,15 +123,15 @@ signing = "unsigned"
 path = "src-tauri\\target\\release\\bundle\\msi\\CloneCratesGUI_0.1.0_x64_en-US.msi"
 runtime = "win-x64"
 package_version = "0.1.0.0"
-size_bytes = 131117785
-sha256 = "35A5AE62420E29A2E0F535106D0E5A615430C7B5BF8149FCA6234F26FAB76C0F"
+size_bytes = 131334873
+sha256 = "A2959D78BB6AD89E3A5A48F0093EC7169F52ADF462AC1D21CFB4AC3D9F3CA122"
 
 [release.installer.nsis]
 path = "src-tauri\\target\\release\\bundle\\nsis\\CloneCratesGUI_0.1.0_x64-setup.exe"
 runtime = "win-x64"
 package_version = "0.1.0.0"
-size_bytes = 81780891
-sha256 = "8D057BDA0F5133FB24C86A45ED3408C222989E7208E13D3FC4C651B8B2921C52"
+size_bytes = 81846104
+sha256 = "61E82C4108467278B1AA3ABA3186A6888D51EE88BB3DFBB275DBAA09BE1AE0E0"
 
 [release.verified]
 date = "2026-08-05"
