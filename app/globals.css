@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--line);
+  --color-ring: var(--cyan);
+  --font-sans: 'Aptos', 'Segoe UI', sans-serif;
+  --font-display: 'Arial Narrow', 'Aptos Narrow', sans-serif;
+  --font-mono: 'Aptos Mono', 'SFMono-Regular', monospace;
+}
+
+:root {
+  color-scheme: dark;
+  --background: #050913;
+  --ink: #02060f;
+  --surface: #0b1623;
+  --paper: #e1e7db;
+  --muted: #7f929f;
+  --line: #243949;
+  --cyan: #00d8ff;
+  --teal: #3bc8a2;
+  --amber: #f9b84d;
+  --violet: #a98cff;
+  --green: #6fe3a4;
+  --radius: 0px;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--background); }
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  background-image: linear-gradient(rgba(75, 115, 132, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(75, 115, 132, 0.055) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.font-display { font-family: var(--font-display); font-stretch: condensed; }
+.font-mono { font-family: var(--font-mono); }
+::selection { background: var(--cyan); color: var(--ink); }
+button, input, select { border-radius: 0; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+option { background: var(--ink); color: var(--paper); }
