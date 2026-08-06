@@ -194,12 +194,34 @@ NSIS:
     Set-Text $hashFile $hashText
 
     $manifest = Get-Content -LiteralPath $manifestPath -Raw
-    $manifest = Update-Between $manifest '(?s)(\[release\.installer\.msi\].*?size_bytes = )\d+' "`$1$($msi.Length)"
-    $manifest = Update-Between $manifest '(?s)(\[release\.installer\.msi\].*?sha256 = )"[^"]*"' "`$1`"$msiHash`""
-    $manifest = Update-Between $manifest '(?s)(\[release\.installer\.nsis\].*?size_bytes = )\d+' "`$1$($nsis.Length)"
-    $manifest = Update-Between $manifest '(?s)(\[release\.installer\.nsis\].*?sha256 = )"[^"]*"' "`$1`"$nsisHash`""
-    $manifest = Update-Between $manifest '(?s)(\[release\.verified\].*?tests = )"[^"]*"' "`$1`"release gate passed: pnpm run lint, cargo check, CloneCratesio go test ./..., bundled runtime self-test`""
-    $manifest = Update-Between $manifest '(?s)(\[release\.verified\].*?installer_build = )"[^"]*"' "`$1`"pnpm tauri build completed; MSI and NSIS artifacts hashed`""
+    $releaseBlock = @"
+[release]
+status = "candidate"
+version = "$Version"
+name = "CloneCratesGUI v$Version - Self-Contained Runtime Release"
+date = "$(Get-Date -Format 'yyyy-MM-dd')"
+signing = "unsigned"
+
+[release.installer.msi]
+path = "src-tauri\\target\\release\\bundle\\msi\\$($msi.Name)"
+runtime = "win-x64"
+package_version = "$Version.0"
+size_bytes = $($msi.Length)
+sha256 = "$msiHash"
+
+[release.installer.nsis]
+path = "src-tauri\\target\\release\\bundle\\nsis\\$($nsis.Name)"
+runtime = "win-x64"
+package_version = "$Version.0"
+size_bytes = $($nsis.Length)
+sha256 = "$nsisHash"
+
+[release.verified]
+date = "$(Get-Date -Format 'yyyy-MM-dd')"
+tests = "release gate passed: pnpm run lint, cargo check, CloneCratesio go test ./..., bundled runtime self-test"
+installer_build = "pnpm tauri build completed; MSI and NSIS artifacts hashed"
+"@
+    $manifest = [regex]::Replace($manifest, '(?s)\[release\].*\z', $releaseBlock.TrimEnd())
     Set-Text $manifestPath $manifest
 
     $releaseNote = Get-Content -LiteralPath $releaseNotePath -Raw

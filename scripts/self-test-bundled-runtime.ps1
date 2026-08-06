@@ -47,11 +47,6 @@ Require-File $downloadExe
 Require-File $sidecarsExe
 Require-File $extractExe
 
-if ((Test-Path -LiteralPath $WorkRoot) -and -not $KeepWorkRoot) {
-    Remove-Item -LiteralPath $WorkRoot -Recurse -Force
-}
-New-Item -ItemType Directory -Force -Path $WorkRoot | Out-Null
-
 $env:GIT_EXEC_PATH = $gitExecPath
 $env:GIT_SSL_CAINFO = $gitCaInfo
 $env:PATH = @(
@@ -93,6 +88,17 @@ $sidecars = Join-Path $WorkRoot "sidecars.jsonl"
 $bundleWork = Join-Path $WorkRoot "bundle-work"
 $bundles = Join-Path $WorkRoot "bundles"
 $restored = Join-Path $WorkRoot "restored"
+
+if ((Test-Path -LiteralPath $WorkRoot) -and -not $KeepWorkRoot) {
+    Remove-Item -LiteralPath $WorkRoot -Recurse -Force
+}
+New-Item -ItemType Directory -Force -Path $WorkRoot | Out-Null
+
+foreach ($outputPath in @($mirrorDir, $manifest, $sidecars, $bundleWork, $bundles, $restored, (Join-Path $WorkRoot "bundle-manifest.jsonl"))) {
+    if (Test-Path -LiteralPath $outputPath) {
+        Remove-Item -LiteralPath $outputPath -Recurse -Force
+    }
+}
 
 Step "Bundled tool versions"
 Invoke-Native -Exe $gitExe -Arguments @("--version")

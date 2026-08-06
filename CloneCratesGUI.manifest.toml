@@ -123,17 +123,17 @@ signing = "unsigned"
 path = "src-tauri\\target\\release\\bundle\\msi\\CloneCratesGUI_0.1.0_x64_en-US.msi"
 runtime = "win-x64"
 package_version = "0.1.0.0"
-size_bytes = 0
-sha256 = "PENDING_RELEASE_GATE"
+size_bytes = 131117785
+sha256 = "35A5AE62420E29A2E0F535106D0E5A615430C7B5BF8149FCA6234F26FAB76C0F"
 
 [release.installer.nsis]
 path = "src-tauri\\target\\release\\bundle\\nsis\\CloneCratesGUI_0.1.0_x64-setup.exe"
 runtime = "win-x64"
 package_version = "0.1.0.0"
-size_bytes = 0
-sha256 = "PENDING_RELEASE_GATE"
+size_bytes = 81780891
+sha256 = "8D057BDA0F5133FB24C86A45ED3408C222989E7208E13D3FC4C651B8B2921C52"
 
 [release.verified]
 date = "2026-08-05"
-tests = "release gate pending after documentation normalization"
-installer_build = "pending"
+tests = "release gate passed: pnpm run lint, cargo check, CloneCratesio go test ./..., bundled runtime self-test"
+installer_build = "pnpm tauri build completed; MSI and NSIS artifacts hashed"

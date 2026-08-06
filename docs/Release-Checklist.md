@@ -50,11 +50,11 @@ This checklist is the DRS release gate record for CloneCratesGUI. Run `scripts/r
 
 - Package target: `src-tauri\target\release\bundle\msi\CloneCratesGUI_0.1.0_x64_en-US.msi`
 - Package target: `src-tauri\target\release\bundle\nsis\CloneCratesGUI_0.1.0_x64-setup.exe`
-- Package size: `PENDING_RELEASE_GATE`
-- SHA-256: `PENDING_RELEASE_GATE`
+- Package size: MSI 131097305 bytes; NSIS 81767072 bytes
+- SHA-256: MSI 3AE83EC0057DF66D39620888D4251161178BF88C6142DD5B2772375AD8CA0CC9; NSIS E79DEE7C0FBEF615AF3E84B84F6A00F454D2AB7E1B05C2F3213C94E4B3E01A81
 - Signing: unsigned
-- Build result: pending final release gate
-- Test result: pending final release gate
+- Build result: release gate completed on 2026-08-05
+- Test result: release gate passed on 2026-08-05
 - Install result: clean-machine install/uninstall pending
 - Data safety: installer uninstall behavior pending clean-machine check
 - Public release: not planned until clean-machine verification is recorded
