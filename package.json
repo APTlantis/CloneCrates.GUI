@@ -1,13 +1,15 @@
 {
-  "name": "my-project",
+  "name": "clone-crates-gui",
   "version": "0.1.0",
   "private": true,
+  "description": "Self-contained Windows desktop operator console for CloneCratesio.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "start": "vite preview",
     "lint": "tsc --noEmit",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "release:gate": "powershell -ExecutionPolicy Bypass -File scripts\\release-gate.ps1"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

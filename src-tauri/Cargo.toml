@@ -1,10 +1,10 @@
 [package]
-name = "app"
+name = "clone-crates-gui"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+description = "Self-contained Windows desktop operator console for CloneCratesio."
+authors = ["Herb"]
+license = "MIT"
+repository = "git@github.com:APTlantis/CloneCratesGUI.git"
 edition = "2021"
 rust-version = "1.77.2"
 

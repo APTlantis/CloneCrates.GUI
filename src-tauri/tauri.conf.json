@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "clone-crates-gui",
+  "productName": "CloneCratesGUI",
   "version": "0.1.0",
   "identifier": "com.hschumannhome.clone-crates-gui",
   "build": {
@@ -29,6 +29,11 @@
     "active": true,
     "targets": "all",
     "resources": [
+      "../README.md",
+      "../Project-README.md",
+      "../AGENTS.md",
+      "../CloneCratesGUI.manifest.toml",
+      "../docs/**/*",
       "resources/bin/*",
       "resources/portable-git/**/*"
     ],
